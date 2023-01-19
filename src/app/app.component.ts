@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeployData } from './deploy-data-model';
 import { HttpService } from './httpService.service';
 @Component({
    selector: 'app-root',
@@ -7,7 +8,7 @@ import { HttpService } from './httpService.service';
 })
 export class AppComponent implements OnInit {
    title = 'appDeployments';
-   documents: any;
+   documents!: DeployData[];
 
    constructor(private httpService: HttpService) {}
    ngOnInit() {
@@ -15,9 +16,6 @@ export class AppComponent implements OnInit {
          (response) => {
             this.documents = response;
          },
-         (error) => {
-            console.log(error);
-         }
       );
    }
 }
